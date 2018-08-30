@@ -1,0 +1,15 @@
+body {
+  background-color: whitesmoke;
+}
+
+.centerdiv {
+  margin: 0 auto;
+  width: 50%;
+  padding-top: 20%;
+  
+}
+
+.boxStyle {
+  font-size: 1.4em;
+  font-weight: bold;
+}
