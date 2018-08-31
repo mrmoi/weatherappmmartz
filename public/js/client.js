@@ -78,7 +78,7 @@
 
     makeReq();
 })();
-
+/* 
 var geolocation = document.getElementById("geoposition");
 
 function showPosition(position) {
@@ -89,9 +89,9 @@ function showPosition(position) {
 function getLocation() {
     if (navigator.geolocation) {
         console.log("Yes");
-        //console.log(timestamp);
+        console.log(timestamp);
         navigator.geolocation.getCurrentPosition(showPosition);
     } else { 
         geolocation.innerHTML = "Geolocation is not supported by this browser.";
     }
-}
+} */
