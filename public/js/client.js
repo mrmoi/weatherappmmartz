@@ -78,3 +78,20 @@
 
     makeReq();
 })();
+
+var geolocation = document.getElementById("geoposition");
+
+function showPosition(position) {
+    geolocation.innerHTML = "Latitude: " + position.coords.latitude + 
+        "<br>Longitude: " + position.coords.longitude;
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        console.log("Yes");
+        //console.log(timestamp);
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        geolocation.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
