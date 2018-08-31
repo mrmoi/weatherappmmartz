@@ -59,7 +59,8 @@
 
         function updateAstronomy() {
             var astronomydiv = document.getElementById("astronomy");
-            astronomydiv.innerHTML = "<p>Sunrise: " + sunrise + ", Sunset: " + sunset + "</p>"                  
+            astronomydiv.innerHTML = "<p>Sunrise: " + sunrise.slice(0,3) + "0 AM"
+                                    + ", Sunset: " + sunset.toUpperCase() + "</p>"                  
         }
 
         
