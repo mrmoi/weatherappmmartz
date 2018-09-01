@@ -1,5 +1,21 @@
 "use strict";
 
+function getLocation() {
+    if (navigator.geolocation) {
+    console.log("geolocation is supported");
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        console.log("geolocation is not supported");
+    }
+}
+
+function showPosition(position) {
+    console.log(position.coords.latitude);
+    console.log(position.coords.longitude);
+}
+
+getLocation();
+
 (function() {
     var url = "https://query.yahooapis.com/v1/public/yql?q=";
     var consKey = "dj0yJmk9bUlLZ09jUE5IUm1SJmQ9WVdrOVFtaEdXbVpuTnpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Mg--";
@@ -78,20 +94,3 @@
 
     makeReq();
 })();
-/* 
-var geolocation = document.getElementById("geoposition");
-
-function showPosition(position) {
-    geolocation.innerHTML = "Latitude: " + position.coords.latitude + 
-        "<br>Longitude: " + position.coords.longitude;
-}
-
-function getLocation() {
-    if (navigator.geolocation) {
-        console.log("Yes");
-        console.log(timestamp);
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        geolocation.innerHTML = "Geolocation is not supported by this browser.";
-    }
-} */
