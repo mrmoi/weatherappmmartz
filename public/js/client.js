@@ -1,22 +1,71 @@
 "use strict";
 
-function getLocation() {
-    if (navigator.geolocation) {
-    console.log("geolocation is supported");
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else { 
-        console.log("geolocation is not supported");
-    }
-}
-
-function showPosition(position) {
-    console.log(position.coords.latitude);
-    console.log(position.coords.longitude);
-}
-
-getLocation();
-
 (function() {
+
+    // Get coordinates 
+    function getLocation() {
+        if (navigator.geolocation) {
+            //console.log("geolocation is supported");
+            //navigator.geolocation.getCurrentPosition(getCoords, errorHandler);
+            //navigator.geolocation.getCurrentPosition(getCoords);
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var pos = {
+                    lat: position.coords.latitude,
+                    longitude: position.coords.longitude
+                };
+
+                console.log(pos);
+                return pos;
+            });
+        } else { 
+            console.log("geolocation is not supported");
+        }
+    }
+
+    // Assign coordinates latx and longx to variables
+/*     function getCoords(pos) {
+        var crd = pos.coords;
+
+        console.log('Your current position is:');
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        console.log(`More or less ${crd.accuracy} meters.`);
+
+        var coordinateDiv = document.getElementById("coordinates");
+            coordinateDiv.innerHTML = "<p>Latitude: " + `${crd.latitude}` + ", Longitude: " + `${crd.longitude}` + "</p>" 
+    } */
+
+    // location error handler
+/*     function errorHandler(err) {
+        if(err.code == 1) {
+            console.log("Access denied");
+        } else if( err.code == 2) {
+            console.log("Position is unavailable");
+        }
+    } */
+
+/*     function showPosition(position) {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+
+        return position.coords.latitude;
+        return position.coords.longitude;
+    } */
+    
+    getLocation();
+    
+
+    //var apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+    //var apiKey = "0419507b4c048eb4f82fc9ee5d7dd6e2";
+
+ /*    function decodeCoords {
+        httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = resMethod;
+        httpRequest.open();
+    }
+ */
+    //https://api.openweathermap.org/data/2.5/weather?lat=33.645494299999996&lon=-111.98607539999999
+
     var url = "https://query.yahooapis.com/v1/public/yql?q=";
     var consKey = "dj0yJmk9bUlLZ09jUE5IUm1SJmQ9WVdrOVFtaEdXbVpuTnpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Mg--";
     var location = "phoenix,az";
