@@ -28,13 +28,13 @@
     }
 
     function displayPosition(position, objectid) {
-        alert(objectid + " ##  Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+        //alert(objectid + " ##  Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
         var geometry = (position.coords.latitude + "," + position.coords.longitude).toString();
         sendToServer(objectid, geometry);
     }
 
     function sendToServer(id, geom) {
-        alert("my id is: '" + id + "' " + geom);
+        //alert("my id is: '" + id + "' " + geom);
         var coordis = geom.split(",")
         console.log(coordis);
         var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=";
