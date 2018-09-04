@@ -52,11 +52,28 @@
             if (httpRequest.readyState === 4) {
                 if (httpRequest.status === 200) {
                     console.log("successful call");
+                    updateLoc(httpRequest.responseText);
                 } else {
                     console.log("unsuccessful call");
                 }
                 console.log(httpRequest.responseText);
             }
+        }
+
+        function updateLoc(responseText) {
+            console.log(responseText);
+            var response = JSON.parse(responseText);
+
+            var lon = response.coord.lon;
+            var lat = response.coord.lat;
+            var city = response.name;
+
+            console.log(lon);
+            var corddiv = document.getElementById("coordinates");
+            corddiv.innerHTML = "<p>Longitude: " + lon + ", Latitude: " + lat + "</p>"
+            
+            var citydiv = document.getElementById("city");
+            citydiv.innerHTML = "<p>City: " + city + "</p>"
         }
         
         translateCoords();
