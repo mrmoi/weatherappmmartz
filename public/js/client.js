@@ -3,23 +3,63 @@
 (function() {
 
     // Get coordinates 
-    function getLocation() {
+    function getLocation(objectid) {
         if (navigator.geolocation) {
             //console.log("geolocation is supported");
             //navigator.geolocation.getCurrentPosition(getCoords, errorHandler);
             //navigator.geolocation.getCurrentPosition(getCoords);
-            navigator.geolocation.getCurrentPosition(function(position) {
+/*             navigator.geolocation.getCurrentPosition(function(position) {
                 var pos = {
                     lat: position.coords.latitude,
                     longitude: position.coords.longitude
-                };
+                }; */
 
-                console.log(pos);
-                return pos;
-            });
+                //console.log(pos);
+                //return pos;
+            var timeoutVal = 10 * 1000 * 1000;
+            navigator.geolocation.getCurrentPosition(
+                function(position) {displayPosition(position, objectid)}, 
+                errorHandler,
+                {enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+            );
         } else { 
             console.log("geolocation is not supported");
         }
+    }
+
+    function displayPosition(position, objectid) {
+        alert(objectid + " ##  Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+        var geometry = (position.coords.latitude + "," + position.coords.longitude).toString();
+        sendToServer(objectid, geometry);
+    }
+
+    function sendToServer(id, geom) {
+        alert("my id is: '" + id + "' " + geom);
+        var coordis = geom.split(",")
+        console.log(coordis);
+        var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=";
+        var apiKey = "0419507b4c048eb4f82fc9ee5d7dd6e2";
+        console.log(apiUrl + coordis[0] + "&lon=" + coordis[1] + "&apiKey=" + apiKey)
+
+        function translateCoords() {
+            httpRequest = new XMLHttpRequest();
+            httpRequest.onreadystatechange = responseMethod;
+            httpRequest.open('GET', apiUrl + coordis[0] + "&lon=" + coordis[1] + "&apiKey=" + apiKey);
+            httpRequest.send();
+        }
+
+        function responseMethod() {
+            if (httpRequest.readyState === 4) {
+                if (httpRequest.status === 200) {
+                    console.log("successful call");
+                } else {
+                    console.log("unsuccessful call");
+                }
+                console.log(httpRequest.responseText);
+            }
+        }
+        
+        translateCoords();
     }
 
     // Assign coordinates latx and longx to variables
@@ -36,13 +76,13 @@
     } */
 
     // location error handler
-/*     function errorHandler(err) {
+     function errorHandler(err) {
         if(err.code == 1) {
             console.log("Access denied");
         } else if( err.code == 2) {
             console.log("Position is unavailable");
         }
-    } */
+    }
 
 /*     function showPosition(position) {
         console.log(position.coords.latitude);
@@ -50,14 +90,21 @@
 
         return position.coords.latitude;
         return position.coords.longitude;
-    } */
+} */
     
     getLocation();
     
 
-    //var apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
-    //var apiKey = "0419507b4c048eb4f82fc9ee5d7dd6e2";
+    /* var apiUrl = "https://api.openweathermap.org/data/2.5/weather?";
+    var apiKey = "0419507b4c048eb4f82fc9ee5d7dd6e2";
 
+    function makeReq() {
+        httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = resMethod;
+        httpRequest.open('GET', apiUrl + getLocation, + '&consKey=' + apiKey);
+        httpRequest.send();
+    }
+ */
  /*    function decodeCoords {
         httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = resMethod;
