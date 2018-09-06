@@ -2,15 +2,20 @@ body {
   background-color: whitesmoke;
 }
 
+.customNavbar {
+  background-color: black;
+  border-bottom: 2px solid greenyellow;
+}
+
 .centerdiv {
   margin: 0 auto;
-  width: 40%;
+  width: 30%;
   padding-top: 15%;
   
 }
 
 .boxStyle {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: bold;
   font-family: 'Ubuntu', 'Arial';
   color: darkslateblue;
