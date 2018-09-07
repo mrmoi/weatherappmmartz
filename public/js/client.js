@@ -1,6 +1,64 @@
 "use strict";
 
+/*
+Get coordinates
+    If no coordinates then display error message to allow browser location
+Call yahoo API to get weather data
+Display weather data
+
+*/
+
 (function() {
+
+    function getGeoLocation() {
+        if (navigator.geolocation) {
+            var timeoutVal = 10 * 1000 * 1000;
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    convertCoordinates(position)
+                }, errorHandler, {enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
+            );
+        } else { 
+            console.log("geolocation is not supported");
+        }
+    }
+
+    function errorHandler(err) {
+        if(err.code == 1) {
+            console.log("Access denied");
+        } else if( err.code == 2) {
+            console.log("Position is unavailable");
+        }
+    }
+    // Create error message for user
+
+    function convertCoordinates(position) {
+        var coordinates = (position.coords.latitude + "," + position.coords.longitude).toString();
+        console.log(coordinates);
+        
+        var geocoder;
+        geocoder = new google.maps.Geocoder();
+        var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        
+        geocoder.geocode({
+            'latLng': latlng
+        }, function(results) {
+            displayFormattedAddress(results);
+        });
+    }
+
+    function displayFormattedAddress(results) {
+        console.log(results[4].formatted_address);
+        var locationdiv = document.getElementById("location");
+        locationdiv.innerHTML = "<p>" + results[4].formatted_address + "</p>"  
+    }
+
+    getGeoLocation();
+
+})();
+
+
+/* (function() {
 
     // Get coordinates and pass on to sendToTranslate function
     function getLocation(objectid) {
@@ -37,6 +95,34 @@
         var apiUrl = "https://api.openweathermap.org/data/2.5/weather?lat=";
         var apiKey = "0419507b4c048eb4f82fc9ee5d7dd6e2";
         //console.log(apiUrl + coordis[0] + "&lon=" + coordis[1] + "&apiKey=" + apiKey)
+
+        console.log(coordis);
+        var geocoder;
+
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+        }
+
+        function codeLatLng() {
+
+            //var input = document.getElementById("latlng").getAttribute('value');
+            //console.log(input);
+            //var latlngStr = input.split(",", 2);
+            //var lat = parseFloat(latlngStr[0]);
+            //var lng = parseFloat(latlngStr[1]);
+            var latlng = new google.maps.LatLng(coordis[0], coordis[1]);
+            geocoder.geocode({
+                'latLng': latlng
+            }, function(results, status) {
+        
+                document.getElementById("test").innerHTML = '' + (results[4].formatted_address); + ''
+
+                console.log(results[4]);
+            });
+        }
+
+        initialize();
+        codeLatLng();
 
         function translateCoords() {
             httpRequest = new XMLHttpRequest();
@@ -154,3 +240,4 @@
     makeReq();
     
 })();
+ */
