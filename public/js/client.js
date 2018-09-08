@@ -50,7 +50,6 @@
             } else {
                 updateUIError();
             }
-            //console.log(httpRequest.responseText);
         }
     }
 
@@ -60,9 +59,22 @@
     }
 
     function updateUI(responseText) {
-        var conditiondiv = document.getElementById("condition");
-        
-        conditiondiv.innerHTML = "<p>" + responseText + "</p>" 
+        var response = JSON.parse(responseText);
+        var location = response.query.results.channel.location;
+        var wind = response.query.results.channel.wind;
+
+        updateLocation(location);
+        updateWind(wind);
+    }
+
+    function updateLocation(location) {
+        var locationdiv = document.getElementById("location");
+        locationdiv.innerHTML = "<p>" + location.city + ", " + location.region + ", " + location.country + "</p>" 
+    }
+
+    function updateWind(wind) {
+        var windiv = document.getElementById("wind");
+        windiv.innerHTML = "<p>Feels like: " + wind.chill + " &#8457, Direction: " + wind.direction + ", Speed: " + wind.speed + " MPH</p>"
     }
 
     getGeoLocation();

@@ -3,13 +3,13 @@ body {
 }
 
 .customNavbar {
-  background-color: darkslateblue;
+  background-color: black;
   border-bottom: 2px solid lightcoral;
 }
 
 .centerdiv {
   margin: 0 auto;
-  width: 30%;
+  width: 40%;
   padding-top: 15%;
   
 }
