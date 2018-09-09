@@ -2,7 +2,26 @@ body {
   background-color: whitesmoke;
 }
 
+.center-block {
+  display: block;
+  margin: auto;
+  padding-top: 10%;
+  padding-bottom: 10%;
+  width: 50%;
+}
+
+.boxStyle {
+  display: block;
+  margin: auto;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Marcellus SC', serif;
+  color: black;
+}
+
 .circle {
+  margin: auto;
   height: 120px;
   width: 120px;
   border-radius: 60px;
@@ -15,29 +34,30 @@ body {
 }
 
 @keyframes initCircle {
-    0%   {background-color:blue; left:0px; top:0px;}
-    25%  {background-color:purple; left:200px; top:0px;}
-    50%  {background-color:green; left:200px; top:200px;}
-    75%  {background-color:red; left:0px; top:200px;}
-    100% {background-color:orange; left:0px; top:0px;}
+    0%   {background-color:black; left:0px; top:0px;}
+    10%   {background-color:darkblue; left:100px; top:0px;}
+    20%  {background-color:blue; left:200px; top:0px;}
+    30%   {background-color:green; left:0px; top:100px;}
+    40%   {background-color:purple; left:100px; top:0px;}
+    50%  {background-color:red; left:200px; top:200px;}
+    60%   {background-color:orangered; left:100px; top:0px;}
+    70%  {background-color:orange; left:0px; top:200px;}
+    80%   {background-color:yellowgreen; left:200px; top:0px;}
+    90%   {background-color:yellow; left:0px; top:100px;}
+    100% {background-color:white; left:0px; top:0px;}
 }
 
 .customNavbar {
   background-color: black;
-  border-bottom: 2px solid lightcoral;
-}
-
-.centerdiv {
-  margin: 0 auto;
-  width: 40%;
-  padding-top: 15%;
-  
-}
-
-.boxStyle {
+  border-bottom: 4px solid lightcoral;
+  font-family: 'Monoton', cursive;
   font-size: 1.2em;
+}
+
+#condition {
+  font-size: 5.5em;
   font-weight: bold;
-  font-family: 'Ubuntu', 'Arial';
-  color: darkslateblue;
+  text-decoration: underline;
+  text-shadow: 3px 2px rgba(169, 169, 169, 0.5);
 }
 

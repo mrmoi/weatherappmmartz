@@ -105,7 +105,7 @@
 
     function updateCondition(condition) {
         var conditionDiv = document.getElementById("condition");
-        conditionDiv.innerHTML = "<p>Current Temperature: " + condition.temp + "&#8457</p>";
+        conditionDiv.innerHTML = "<p>" + condition.temp + "&#8457</p>";
     }
 
     getGeoLocation();
