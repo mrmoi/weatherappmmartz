@@ -8,7 +8,8 @@
   <% include ../partials/nav.ejs %>
   
   <div class="container">
-    <div class="centerdiv">
+    <div class="centerdiv" id="main">
+        <div class="boxStyle" id="progress"></div>
         <div class="boxStyle" id="location"></div>
         <div class="boxStyle" id="wind"></div>
         <div class="boxStyle" id="astronomy"></div>
@@ -16,6 +17,17 @@
         <div class="boxStyle" id="condition"></div>
     </div>
   </div>
+
+  <script>
+      var mainDiv = document.getElementById("main");
+      
+      var progress = document.getElementById("progress");
+
+      do {
+        progress.innerHTML = "<p> Getting Forecast...... </p>";
+      }
+      while (mainDiv.innerHTML === null);
+  </script>
 
 </body>
 </html>

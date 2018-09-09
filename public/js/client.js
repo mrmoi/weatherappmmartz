@@ -5,11 +5,14 @@
     function getGeoLocation() {
         if (navigator.geolocation) {
             var timeoutVal = 10 * 1000 * 1000;
+            console.log("getGeolocation");
+
             navigator.geolocation.getCurrentPosition(
                 function(position) {
                     getCoordinates(position)
                 }, errorHandler, {enableHighAccuracy: true, timeout: timeoutVal, maximumAge: 0 }
             );
+
         } else { 
             console.log("geolocation is not supported");
         }
@@ -26,16 +29,17 @@
 
     function getCoordinates(results) {
         makeReq(results.coords.latitude, results.coords.longitude);
+        console.log("getCoordinates");
     }
 
     var httpRequest;
 
     function makeReq(lat, long) {
-        console.log("Latitude: " + lat + ", Longitude: " + long);
+        //console.log("Latitude: " + lat + ", Longitude: " + long);
         var url = "https://query.yahooapis.com/v1/public/yql?";
         var consKey = "dj0yJmk9bUlLZ09jUE5IUm1SJmQ9WVdrOVFtaEdXbVpuTnpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Mg--";
         var query = "q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='(" + lat + "," + long + ")')&format=json";
-        
+        console.log("makeReq");
         httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = handleResponse;
         httpRequest.open('GET', url + query, + '&consKey=' + consKey);
@@ -45,8 +49,9 @@
     function handleResponse() {
         if (httpRequest.readyState === 4) {
             if (httpRequest.status === 200) {
+                console.log("handleResponse");
                 updateUI(httpRequest.responseText);
-                console.log("success");
+                //console.log("success");
             } else {
                 updateUIError();
             }
@@ -59,6 +64,7 @@
     }
 
     function updateUI(responseText) {
+        console.log("updateUI");
         var response = JSON.parse(responseText);
         var location = response.query.results.channel.location;
         var wind = response.query.results.channel.wind;
@@ -74,6 +80,10 @@
     }
 
     function updateLocation(location) {
+        
+        var progress = document.getElementById("progress");
+        progress.innerHTML = "";
+
         var locationdiv = document.getElementById("location");
         locationdiv.innerHTML = "<p>" + location.city + ", " + location.region + ", " + location.country + "</p>" 
     }
