@@ -2,6 +2,26 @@ body {
   background-color: whitesmoke;
 }
 
+.circle {
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
+  background-color: black;
+  -webkit-animation-name: initCircle; /* Safari 4.0 - 8.0 */
+  -webkit-animation-duration: 2s; /* Safari 4.0 - 8.0 */
+  animation-name: initCircle;
+  animation-duration: 4s;
+  animation-iteration-count: 9;
+}
+
+@keyframes initCircle {
+    0%   {background-color:blue; left:0px; top:0px;}
+    25%  {background-color:purple; left:200px; top:0px;}
+    50%  {background-color:green; left:200px; top:200px;}
+    75%  {background-color:red; left:0px; top:200px;}
+    100% {background-color:orange; left:0px; top:0px;}
+}
+
 .customNavbar {
   background-color: black;
   border-bottom: 2px solid lightcoral;
@@ -20,3 +40,4 @@ body {
   font-family: 'Ubuntu', 'Arial';
   color: darkslateblue;
 }
+

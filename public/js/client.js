@@ -35,7 +35,7 @@
     var httpRequest;
 
     function makeReq(lat, long) {
-        //console.log("Latitude: " + lat + ", Longitude: " + long);
+        console.log("Latitude: " + lat + ", Longitude: " + long);
         var url = "https://query.yahooapis.com/v1/public/yql?";
         var consKey = "dj0yJmk9bUlLZ09jUE5IUm1SJmQ9WVdrOVFtaEdXbVpuTnpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Mg--";
         var query = "q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='(" + lat + "," + long + ")')&format=json";
@@ -64,6 +64,10 @@
     }
 
     function updateUI(responseText) {
+
+        var progress = document.getElementById("progress");
+        progress.innerHTML = "";
+
         console.log("updateUI");
         var response = JSON.parse(responseText);
         var location = response.query.results.channel.location;
@@ -80,10 +84,6 @@
     }
 
     function updateLocation(location) {
-        
-        var progress = document.getElementById("progress");
-        progress.innerHTML = "";
-
         var locationdiv = document.getElementById("location");
         locationdiv.innerHTML = "<p>" + location.city + ", " + location.region + ", " + location.country + "</p>" 
     }
