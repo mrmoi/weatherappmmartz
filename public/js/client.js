@@ -75,12 +75,15 @@
         var atmosphere = response.query.results.channel.atmosphere;
         var astronomy = response.query.results.channel.astronomy;
         var condition = response.query.results.channel.item.condition;
+        var hilow = response.query.results.channel.item.forecast;
 
         updateLocation(location);
         updateWind(wind);
         updateAtmosphere(atmosphere);
         updateAstronomy(astronomy);
         updateCondition(condition);
+        updateHiLow(hilow, condition);
+        updateForecast(hilow);
     }
 
     function updateLocation(location) {
@@ -90,7 +93,31 @@
 
     function updateWind(wind) {
         var windiv = document.getElementById("wind");
-        windiv.innerHTML = "<p>Feels like: " + wind.chill + " &#8457, Direction: " + wind.direction + ", Speed: " + wind.speed + " MPH</p>"
+
+        var windDirection = wind.direction;
+        console.log(windDirection);
+        var dir = "";
+
+        if (windDirection > 0 && windDirection < 5) {
+            dir = "North";
+        } else if (windDirection > 5 && windDirection < 85) {
+            dir = "NE";
+        } else if (windDirection > 85 && windDirection < 95) {
+            dir = "East";
+        } else if (windDirection > 95 && windDirection < 175) {
+            dir = "SE";
+        } else if (windDirection > 175 && windDirection < 185) {
+            dir = "South";
+        } else if (windDirection > 185 && windDirection < 265) {
+            dir = "SW";
+        } else if (windDirection > 265 && windDirection < 275) {
+            dir = "West";
+        } else {
+            dir = "NW"; 
+        }
+
+        console.log(dir);
+        windiv.innerHTML = "<p>Feels like: " + wind.chill + " &#8457, Direction: " + dir + ", Speed: " + wind.speed + " MPH</p>"
     }
 
     function updateAtmosphere(atmosphere) {
@@ -106,6 +133,26 @@
     function updateCondition(condition) {
         var conditionDiv = document.getElementById("condition");
         conditionDiv.innerHTML = "<p>" + condition.temp + "&#8457</p>";
+    }
+
+    function updateHiLow(hilow, condition) {
+        var hilowDiv = document.getElementById("hilow");
+        hilowDiv.innerHTML = "<p>Forecast: " + condition.text + ", Low: " + hilow[0].low + "&#8457, High: " + hilow[0].high + "&#8457</p>";
+        console.log(hilow[0].low);
+    }
+
+    function updateForecast(hilow) {
+
+        var forecastArray = new Array(f1, f2, f3, f4);
+        //var forecastDiv = document.getElementById("forecast");
+
+        for (var j = 0; j < forecastArray.length; j++) {    
+            for (var i = 0; i < hilow.length; i++) {
+                console.log(i);
+                //j.innerHTML = "<div><ul><li>Date: " + i + "</li></ul></div";    
+                console.log(forecastArray);
+            }
+        }
     }
 
     getGeoLocation();
