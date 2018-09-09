@@ -62,9 +62,15 @@
         var response = JSON.parse(responseText);
         var location = response.query.results.channel.location;
         var wind = response.query.results.channel.wind;
+        var atmosphere = response.query.results.channel.atmosphere;
+        var astronomy = response.query.results.channel.astronomy;
+        var condition = response.query.results.channel.item.condition;
 
         updateLocation(location);
         updateWind(wind);
+        updateAtmosphere(atmosphere);
+        updateAstronomy(astronomy);
+        updateCondition(condition);
     }
 
     function updateLocation(location) {
@@ -75,6 +81,21 @@
     function updateWind(wind) {
         var windiv = document.getElementById("wind");
         windiv.innerHTML = "<p>Feels like: " + wind.chill + " &#8457, Direction: " + wind.direction + ", Speed: " + wind.speed + " MPH</p>"
+    }
+
+    function updateAtmosphere(atmosphere) {
+        var atmosphereDiv = document.getElementById("atmosphere");
+        atmosphereDiv.innerHTML = "<p>Humidity: " + atmosphere.humidity + "%, Visibility: " + atmosphere.visibility + " Miles</p>";
+    }
+
+    function updateAstronomy(astronomy) {
+        var astronomyDiv = document.getElementById("astronomy");
+        astronomyDiv.innerHTML = "<p>Sunrise: " + astronomy.sunrise + ", Sunset: " + astronomy.sunset + "</p>";
+    }
+
+    function updateCondition(condition) {
+        var conditionDiv = document.getElementById("condition");
+        conditionDiv.innerHTML = "<p>Current Temperature: " + condition.temp + "&#8457</p>";
     }
 
     getGeoLocation();
