@@ -143,20 +143,16 @@
 
     function updateForecast(hilow) {
 
-        var forecastArray = new Array(f1, f2, f3, f4);
-        //var forecastDiv = document.getElementById("forecast");
+        for (var i = 0; i < hilow.length; i++) {
 
-        for (var j = 0; j < forecastArray.length; j++) {    
-            for (var i = 0; i < hilow.length; i++) {
-                console.log(i);
-                //j.innerHTML = "<div><ul><li>Date: " + i + "</li></ul></div";    
-                console.log(forecastArray);
-            }
+         $(".forecast").append( "<p>" + hilow[i].day + ", " + hilow[i].date + "</p>" + 
+                                "<p> High: " + hilow[i].high + "&#8457, Low: " + hilow[i].low  + "&#8457</p>" +
+                                "<p>" + hilow[i].text + "</p>");
+
         }
+
     }
 
     getGeoLocation();
 
 })();
-
-
