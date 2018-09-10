@@ -68,14 +68,42 @@ body {
   font-weight: bold;
 }
 
-.forecast p:nth-child(3n + 1) {
+.forecast p:nth-child(n+1):nth-child(-n+3) {
   color: red;
 }
 
-.forecast p:nth-child(2n + 3) {
+.forecast p:nth-child(n+4):nth-child(-n+6) {
   color: blue;
 }
 
-.forecast p:nth-child(3n) {
+.forecast p:nth-child(n+7):nth-child(-n+9) {
+  color: yellow;
+}
+
+.forecast p:nth-child(n+10):nth-child(-n+12) {
   color: green;
+}
+
+.forecast p:nth-child(n+13):nth-child(-n+15) {
+  color: black;
+}
+
+.forecast p:nth-child(n+16):nth-child(-n+18) {
+  color: orange;
+}
+
+.forecast p:nth-child(n+19):nth-child(-n+22) {
+  color: lightblue;
+}
+
+.forecast p:nth-child(n+22):nth-child(-n+24) {
+  color: purple;
+}
+
+.forecast p:nth-child(n+25):nth-child(-n+27) {
+  color: peru;
+}
+
+.forecast p:nth-child(n+28):nth-child(-n+30) {
+  color: crimson;
 }
