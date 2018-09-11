@@ -145,13 +145,15 @@
 
         for (var i = 0; i < hilow.length; i++) {
 
-         $(".forecast").append( "<p>" + hilow[i].day + ", " + hilow[i].date + "</p>" + 
-                                "<p> High: " + hilow[i].high + "&#8457, Low: " + hilow[i].low  + "&#8457</p>" +
-                                "<p>" + hilow[i].text + "</p>");
-
+        $(".forecast" + i).append( "<p>" + hilow[i].text + "</p>" +
+                                   "<p>" + hilow[i].day + "</p>"  +
+                                   "<p>" + (hilow[i].date).substring(0, 7) + "</p>" + 
+                                   "<p>High: " + hilow[i].high + "&#8457</p>" + 
+                                   "<p>Low: "  + hilow[i].low  + "&#8457</p>"
+                                   );
         }
 
-    }
+    }       
 
     getGeoLocation();
 

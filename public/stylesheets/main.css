@@ -5,8 +5,8 @@ body {
 .center-block {
   display: block;
   margin: auto;
-  padding-top: 10%;
-  padding-bottom: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   width: 50%;
 }
 
@@ -63,47 +63,16 @@ body {
 }
 
 .forecast {
+  margin: 0 auto;
+  text-align: center;
+}
+
+#forecast {
+  display: inline-block;
+  margin: auto;
+  text-align: center;
   font-family: 'Marcellus SC', serif;
-  font-size: 1.2em;
   font-weight: bold;
+  padding-right: 2%;
 }
 
-.forecast p:nth-child(n+1):nth-child(-n+3) {
-  color: red;
-}
-
-.forecast p:nth-child(n+4):nth-child(-n+6) {
-  color: blue;
-}
-
-.forecast p:nth-child(n+7):nth-child(-n+9) {
-  color: yellow;
-}
-
-.forecast p:nth-child(n+10):nth-child(-n+12) {
-  color: green;
-}
-
-.forecast p:nth-child(n+13):nth-child(-n+15) {
-  color: black;
-}
-
-.forecast p:nth-child(n+16):nth-child(-n+18) {
-  color: orange;
-}
-
-.forecast p:nth-child(n+19):nth-child(-n+22) {
-  color: lightblue;
-}
-
-.forecast p:nth-child(n+22):nth-child(-n+24) {
-  color: purple;
-}
-
-.forecast p:nth-child(n+25):nth-child(-n+27) {
-  color: peru;
-}
-
-.forecast p:nth-child(n+28):nth-child(-n+30) {
-  color: crimson;
-}
