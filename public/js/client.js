@@ -21,9 +21,16 @@
     function errorHandler(err) {
         if(err.code == 1) {
             console.log("Access denied");
+            handleDeniedAccess(err.code);
         } else if( err.code == 2) {
             console.log("Position is unavailable");
         }
+    }
+
+    function handleDeniedAccess(err) {
+        var progress = document.getElementById("progress");
+        progress.innerHTML = "<p> Please enable Geolocation</p>";
+        console.log(err);
     }
     // Create error message for user
 
