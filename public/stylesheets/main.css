@@ -50,13 +50,13 @@ body {
 
 .customNavbar {
   background-color: black;
-  border-bottom: 4px solid lightcoral;
+  border-bottom: 4px solid orangered;
   font-family: 'Monoton', cursive;
   font-size: 1.2em;
 }
 
 #condition {
-  font-size: 5.5em;
+  font-size: 5.2em;
   font-weight: bold;
   text-decoration: underline;
   text-shadow: 3px 2px rgba(169, 169, 169, 0.5);
