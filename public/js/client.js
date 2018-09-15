@@ -30,13 +30,11 @@
     function handleDeniedAccess(err) {
         var progress = document.getElementById("progress");
         progress.innerHTML = "<p> Please enable Geolocation</p>";
-        console.log(err);
     }
-    // Create error message for user
+    
 
     function getCoordinates(results) {
         makeReq(results.coords.latitude, results.coords.longitude);
-        console.log("getCoordinates");
     }
 
     var httpRequest;
@@ -46,7 +44,7 @@
         var url = "https://query.yahooapis.com/v1/public/yql?";
         var consKey = "dj0yJmk9bUlLZ09jUE5IUm1SJmQ9WVdrOVFtaEdXbVpuTnpJbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD03Mg--";
         var query = "q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='(" + lat + "," + long + ")')&format=json";
-        console.log("makeReq");
+
         httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = handleResponse;
         httpRequest.open('GET', url + query, + '&consKey=' + consKey);
@@ -56,9 +54,7 @@
     function handleResponse() {
         if (httpRequest.readyState === 4) {
             if (httpRequest.status === 200) {
-                console.log("handleResponse");
                 updateUI(httpRequest.responseText);
-                console.log(httpRequest.responseText);
             } else {
                 updateUIError();
             }
@@ -75,7 +71,6 @@
         var progress = document.getElementById("progress");
         progress.innerHTML = "";
 
-        console.log("updateUI");
         var response = JSON.parse(responseText);
         var location = response.query.results.channel.location;
         var wind = response.query.results.channel.wind;
@@ -102,7 +97,7 @@
         var windiv = document.getElementById("wind");
 
         var windDirection = wind.direction;
-        console.log(windDirection);
+
         var dir = "";
 
         if (windDirection > 0 && windDirection < 5) {
@@ -123,7 +118,7 @@
             dir = "NW"; 
         }
 
-        console.log(dir);
+        
         windiv.innerHTML = "<p>Feels like: " + wind.chill + " &#8457, Direction: " + dir + ", Speed: " + wind.speed + " MPH</p>"
     }
 
@@ -145,7 +140,7 @@
     function updateHiLow(hilow, condition) {
         var hilowDiv = document.getElementById("hilow");
         hilowDiv.innerHTML = "<p>Forecast: " + condition.text + ", Low: " + hilow[0].low + "&#8457, High: " + hilow[0].high + "&#8457</p>";
-        console.log(hilow[0].low);
+        
     }
 
     function updateForecast(hilow) {
