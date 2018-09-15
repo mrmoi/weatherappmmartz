@@ -152,50 +152,62 @@
 
         function weatherIcon(iconCode) {
             
-            if (iconCode == 32) {
-                var icon = "<i class='wi wi-yahoo-32'></i>";
-                return icon;
-            } else if (iconCode == 30) {
-                var icon = "<i class='wi wi-yahoo-30'></i>";
-                return icon;
-            } else if (iconCode == 4) {
-                var icon = "<i class='wi wi-yahoo-4'></i>";
-                return icon;
-            } else if (iconCode == 32) {
-                var icon = "<i class='wi wi-yahoo-32'></i>";
-                return icon;    
-            } else if (iconCode == 34) {
-                var icon = "<i class='wi wi-yahoo-34'></i>";
-                return icon;
-            } else if (iconCode == 2) {
-                var icon = "<i class='wi wi-yahoo-2'></i>";
-                return icon;
-            } else if (iconCode == 32) {
-                var icon = "<i class='wi wi-yahoo-32'></i>";
-                return icon;    
-            } else if (iconCode == 0) {
-                var icon = "<i class='wi wi-yahoo-0'></i>";
-                return icon;
-            } else if (iconCode == 3) {
-                var icon = "<i class='wi wi-yahoo-3'></i>";
-                return icon;
-            } else if (iconCode == 31) {
-                var icon = "<i class='wi wi-yahoo-31'></i>";
-                return icon;
-            }
+        return (iconCode == 0) ? "<i class='wi wi-yahoo-0'></i>":
+        (iconCode == 1) ? "<i class='wi wi-yahoo-1'></i>":
+        (iconCode == 2) ? "<i class='wi wi-yahoo-2'></i>":         
+        (iconCode == 3) ? "<i class='wi wi-yahoo-3'></i>":         
+        (iconCode == 4) ? "<i class='wi wi-yahoo-4'></i>":         
+        (iconCode == 5) ? "<i class='wi wi-yahoo-5'></i>":         
+        (iconCode == 6) ? "<i class='wi wi-yahoo-6'></i>":         
+        (iconCode == 7) ? "<i class='wi wi-yahoo-7'></i>":         
+        (iconCode == 8) ? "<i class='wi wi-yahoo-8'></i>":
+        (iconCode == 9) ? "<i class='wi wi-yahoo-9'></i>":
+        (iconCode == 10) ? "<i class='wi wi-yahoo-10'></i>":
+        (iconCode == 11) ? "<i class='wi wi-yahoo-11'></i>":
+        (iconCode == 12) ? "<i class='wi wi-yahoo-12'></i>":
+        (iconCode == 13) ? "<i class='wi wi-yahoo-13'></i>":
+        (iconCode == 14) ? "<i class='wi wi-yahoo-14'></i>":
+        (iconCode == 15) ? "<i class='wi wi-yahoo-15'></i>":
+        (iconCode == 16) ? "<i class='wi wi-yahoo-16'></i>":
+        (iconCode == 17) ? "<i class='wi wi-yahoo-17'></i>":
+        (iconCode == 18) ? "<i class='wi wi-yahoo-18'></i>":
+        (iconCode == 19) ? "<i class='wi wi-yahoo-19'></i>":
+        (iconCode == 20) ? "<i class='wi wi-yahoo-20'></i>":
+        (iconCode == 21) ? "<i class='wi wi-yahoo-21'></i>":
+        (iconCode == 22) ? "<i class='wi wi-yahoo-22'></i>":
+        (iconCode == 23) ? "<i class='wi wi-yahoo-23'></i>":
+        (iconCode == 24) ? "<i class='wi wi-yahoo-24'></i>":
+        (iconCode == 25) ? "<i class='wi wi-yahoo-25'></i>":
+        (iconCode == 26) ? "<i class='wi wi-yahoo-26'></i>":
+        (iconCode == 27) ? "<i class='wi wi-yahoo-27'></i>":
+        (iconCode == 28) ? "<i class='wi wi-yahoo-28'></i>":
+        (iconCode == 29) ? "<i class='wi wi-yahoo-29'></i>":
+        (iconCode == 30) ? "<i class='wi wi-yahoo-30'></i>":
+        (iconCode == 31) ? "<i class='wi wi-yahoo-31'></i>":
+        (iconCode == 32) ? "<i class='wi wi-yahoo-32'></i>":
+        (iconCode == 33) ? "<i class='wi wi-yahoo-33'></i>":
+        (iconCode == 34) ? "<i class='wi wi-yahoo-34'></i>":
+        (iconCode == 35) ? "<i class='wi wi-yahoo-35'></i>":
+        (iconCode == 36) ? "<i class='wi wi-yahoo-36'></i>":
+        (iconCode == 37) ? "<i class='wi wi-yahoo-37'></i>":
+        (iconCode == 38) ? "<i class='wi wi-yahoo-38'></i>":
+        (iconCode == 39) ? "<i class='wi wi-yahoo-39'></i>":
+        (iconCode == 40) ? "<i class='wi wi-yahoo-40'></i>":
+        (iconCode == 41) ? "<i class='wi wi-yahoo-41'></i>":
+        (iconCode == 42) ? "<i class='wi wi-yahoo-42'></i>":
+        (iconCode == 43) ? "<i class='wi wi-yahoo-43'></i>":
+        (iconCode == 44) ? "<i class='wi wi-yahoo-44'></i>":
+        (iconCode == 45) ? "<i class='wi wi-yahoo-45'></i>":
+        (iconCode == 46) ? "<i class='wi wi-yahoo-46'></i>":
+        (iconCode == 47) ? "<i class='wi wi-yahoo-47'></i>":
+        (iconCode == 3200) ? "<i class='wi wi-yahoo-3200'></i>":
+            "Not a valid forecast"
         }
 
         for (var i = 0; i < hilow.length; i++) {
 
-        $(".forecast" + i).append(  '<p>' + weatherIcon(hilow[i].code) + '</p>'
-
-                                    /* (hilow[i].code === 32 ? "<i class='wi wi-night-sleet'></i>" : "<i class='wi wi-night-sleet'></i>")  */
-
-                                    /* (if (hilow[i].code === 32) {
-                                        + "<p><i class='wi wi-night-sleet'></i>" +  
-                                    }); */
-                                    
-                                    + "<p>" + hilow[i].day + "</p>"  +
+        $(".forecast" + i).append( '<p>' + weatherIcon(hilow[i].code) + '</p>' +
+                                   "<p>" + hilow[i].day + "</p>"  +
                                    "<p>" + (hilow[i].date).substring(0, 7) + "</p>" + 
                                    "<p>" + hilow[i].high + "&#8457</p>" + 
                                    "<p>"  + hilow[i].low  + "&#8457</p>"
