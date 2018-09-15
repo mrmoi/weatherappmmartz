@@ -58,7 +58,7 @@
             if (httpRequest.status === 200) {
                 console.log("handleResponse");
                 updateUI(httpRequest.responseText);
-                //console.log("success");
+                console.log(httpRequest.responseText);
             } else {
                 updateUIError();
             }
@@ -150,13 +150,55 @@
 
     function updateForecast(hilow) {
 
+        function weatherIcon(iconCode) {
+            
+            if (iconCode == 32) {
+                var icon = "<i class='wi wi-yahoo-32'></i>";
+                return icon;
+            } else if (iconCode == 30) {
+                var icon = "<i class='wi wi-yahoo-30'></i>";
+                return icon;
+            } else if (iconCode == 4) {
+                var icon = "<i class='wi wi-yahoo-4'></i>";
+                return icon;
+            } else if (iconCode == 32) {
+                var icon = "<i class='wi wi-yahoo-32'></i>";
+                return icon;    
+            } else if (iconCode == 34) {
+                var icon = "<i class='wi wi-yahoo-34'></i>";
+                return icon;
+            } else if (iconCode == 2) {
+                var icon = "<i class='wi wi-yahoo-2'></i>";
+                return icon;
+            } else if (iconCode == 32) {
+                var icon = "<i class='wi wi-yahoo-32'></i>";
+                return icon;    
+            } else if (iconCode == 0) {
+                var icon = "<i class='wi wi-yahoo-0'></i>";
+                return icon;
+            } else if (iconCode == 3) {
+                var icon = "<i class='wi wi-yahoo-3'></i>";
+                return icon;
+            } else if (iconCode == 31) {
+                var icon = "<i class='wi wi-yahoo-31'></i>";
+                return icon;
+            }
+        }
+
         for (var i = 0; i < hilow.length; i++) {
 
-        $(".forecast" + i).append( "<p>" + hilow[i].text + "</p>" +
-                                   "<p>" + hilow[i].day + "</p>"  +
+        $(".forecast" + i).append(  '<p>' + weatherIcon(hilow[i].code) + '</p>'
+
+                                    /* (hilow[i].code === 32 ? "<i class='wi wi-night-sleet'></i>" : "<i class='wi wi-night-sleet'></i>")  */
+
+                                    /* (if (hilow[i].code === 32) {
+                                        + "<p><i class='wi wi-night-sleet'></i>" +  
+                                    }); */
+                                    
+                                    + "<p>" + hilow[i].day + "</p>"  +
                                    "<p>" + (hilow[i].date).substring(0, 7) + "</p>" + 
-                                   "<p>High: " + hilow[i].high + "&#8457</p>" + 
-                                   "<p>Low: "  + hilow[i].low  + "&#8457</p>"
+                                   "<p>" + hilow[i].high + "&#8457</p>" + 
+                                   "<p>"  + hilow[i].low  + "&#8457</p>"
                                    );
         }
 

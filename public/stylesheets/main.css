@@ -67,6 +67,11 @@ body {
   text-align: center;
 }
 
+.forecast i {
+  font-size: 2.1em;
+  color: black;
+}
+
 #forecast {
   display: inline-block;
   margin: auto;
@@ -76,4 +81,5 @@ body {
   font-size: 1.1em;
   padding-right: 2%;
 }
+
 
